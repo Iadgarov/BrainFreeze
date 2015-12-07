@@ -26,6 +26,9 @@ public class Measurements {
 		LTD_results = lTD_results;
 	}
 	
+	public void dataIsValid(){
+		this.valid = 1;
+	}
 	public boolean isValid(){
 		return (!(valid == 0));
 	}

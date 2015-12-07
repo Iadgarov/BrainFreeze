@@ -19,61 +19,71 @@ import javax.swing.JTextField;
 public class NewPatientWindow {
 
 	// return list of patient information for the constructor.
+	// return null upon cancel or close of window
 	public static ArrayList<String> showInputdialog() {
 		
-	ArrayList<String> returnMe = new ArrayList<>();	
+		ArrayList<String> returnMe = new ArrayList<>();	
+			
+		JTextField firstName = new JTextField();
+		JTextField middleName = new JTextField();
+		JTextField lastName = new JTextField();
+		JTextField age = new JTextField();
+		JTextField IDnum = new JTextField();
+		JTextField condition = new JTextField();
 		
-	JTextField firstName = new JTextField();
-	JTextField middleName = new JTextField();
-	JTextField lastName = new JTextField();
-	JTextField age = new JTextField();
-	JTextField IDnum = new JTextField();
-	JTextField condition = new JTextField();
+		final JComponent[] INPUTS = new JComponent[] {
+				new JLabel("First Name"),
+				firstName,
+				new JLabel("middle Name"),
+				middleName,
+				new JLabel("Last Name"),
+				lastName,
+				new JLabel("age"),
+				age,
+				new JLabel("I.D. Number"),
+				IDnum,
+				new JLabel("Cause of brain damage"),
+				condition
+		};
+		
+		//final String[] OK_CANCEL = {"OK", "Cancel"};
+		
+		int chosenOption = JOptionPane.showConfirmDialog(null, INPUTS, "New Patient Dialog", 
+				JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null);
+		/*
+		System.out.println("You entered " +
+				firstName.getText() + ", " +
+				middleName.getText() + ", " +
+				lastName.getText() + ", " +
+				age.getText() + ", " +
+				IDnum.getText() + ", " +
+				condition.getText());
+		*/
 	
-	final JComponent[] inputs = new JComponent[] {
-			new JLabel("First Name"),
-			firstName,
-			new JLabel("middle Name"),
-			middleName,
-			new JLabel("Last Name"),
-			lastName,
-			new JLabel("age"),
-			age,
-			new JLabel("I.D. Number"),
-			IDnum,
-			new JLabel("Cause of brain damage"),
-			condition
-	};
-	JOptionPane.showMessageDialog(null, inputs, "My custom dialog", JOptionPane.PLAIN_MESSAGE);
-	/*
-	System.out.println("You entered " +
-			firstName.getText() + ", " +
-			middleName.getText() + ", " +
-			lastName.getText() + ", " +
-			age.getText() + ", " +
-			IDnum.getText() + ", " +
-			condition.getText());
-	*/
-
-	if (firstName.getText().length() > 0)
-		returnMe.add(objects.Patient.FIRST_NAME_IDENTIFIER + firstName.getText());
-	
-	if (middleName.getText().length() > 0)
-		returnMe.add(objects.Patient.MIDDLE_NAME_IDENTIFIER + middleName.getText());
-	
-	if (lastName.getText().length() > 0)
-		returnMe.add(objects.Patient.LAST_NAME_IDENTIFIER + lastName.getText());
-	
-	if (age.getText().length() > 0)
-		returnMe.add(objects.Patient.AGE_IDENTIFIER + age.getText());
-	
-	if (IDnum.getText().length() > 0)
-		returnMe.add(objects.Patient.ID_IDENTIFIER + IDnum.getText());
-	
-	if (condition.getText().length() > 0)
-		returnMe.add(objects.Patient.CONDITON_IDENTIFIER + condition.getText());
-	
-	return returnMe;
+		if (firstName.getText().length() > 0)
+			returnMe.add(objects.Patient.FIRST_NAME_IDENTIFIER + firstName.getText());
+		
+		if (middleName.getText().length() > 0)
+			returnMe.add(objects.Patient.MIDDLE_NAME_IDENTIFIER + middleName.getText());
+		
+		if (lastName.getText().length() > 0)
+			returnMe.add(objects.Patient.LAST_NAME_IDENTIFIER + lastName.getText());
+		
+		if (age.getText().length() > 0)
+			returnMe.add(objects.Patient.AGE_IDENTIFIER + age.getText());
+		
+		if (IDnum.getText().length() > 0)
+			returnMe.add(objects.Patient.ID_IDENTIFIER + IDnum.getText());
+		
+		if (condition.getText().length() > 0)
+			returnMe.add(objects.Patient.CONDITON_IDENTIFIER + condition.getText());
+		
+		if (chosenOption == JOptionPane.CANCEL_OPTION ||
+				chosenOption == JOptionPane.CLOSED_OPTION)
+			return null;
+		
+		System.out.println(chosenOption);
+		return returnMe;
 	
 	}
 }

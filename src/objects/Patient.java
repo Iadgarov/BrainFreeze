@@ -19,6 +19,7 @@ public class Patient {
 	public final static String AGE_IDENTIFIER = "<age>";
 	public final static String ID_IDENTIFIER = "<ID>";
 	public final static String CONDITON_IDENTIFIER = "<condition>";
+	
 	private final static String NOT_KNOWN = "Unspecified";
 	
 	public Patient(String[] args){
@@ -70,14 +71,11 @@ public class Patient {
 		}
 		for (int i = 0; i < 3; i++){
 			
-			
-			
 			switch (i){
 			
 				case 0: identifier = FIRST_NAME_IDENTIFIER; 	break;
 				case 1: identifier = MIDDLE_NAME_IDENTIFIER; 	break;
 				case 2: identifier = LAST_NAME_IDENTIFIER; 		break;
-			
 			
 			}
 			

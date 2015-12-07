@@ -1,13 +1,12 @@
 package defualt;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Component;
-import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -16,31 +15,23 @@ import javax.swing.border.EmptyBorder;
 
 import objects.Measurements;
 import objects.Patient;
-import utility.FileAccess;
 import windows.NewPatientWindow;
 
 import javax.swing.JSplitPane;
-import javax.swing.JScrollPane;
-import javax.swing.JDesktopPane;
-import javax.swing.BorderFactory;
+
+import javax.swing.JFileChooser;
 import javax.swing.Box;
 import javax.swing.JButton;
-import javax.swing.JTabbedPane;
-import javax.swing.JMenuBar;
+
 import javax.swing.JToolBar;
-import javax.swing.JTextPane;
-import javax.swing.JList;
-import javax.swing.JCheckBox;
+
 import javax.swing.JComboBox;
-import javax.swing.BoxLayout;
+
 import javax.swing.GroupLayout;
 
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-import java.awt.LayoutManager;
-import java.awt.GridBagConstraints;
+
 import javax.swing.JLabel;
-import javax.swing.SwingConstants;
+
 
 public class MainWindow extends JFrame {
 
@@ -81,8 +72,23 @@ public class MainWindow extends JFrame {
 	
 		addTopToolBar(contentPane);
 		
+		// split area below toolbar into two
+		JSplitPane splitPane = new JSplitPane();
+		contentPane.add(splitPane, BorderLayout.CENTER);
 		
-		///////////
+		// fill in the left area
+		addLeftPanel(splitPane);
+
+		
+		JPanel windowRight = new JPanel();
+		
+		
+		
+		
+	
+	}
+	
+	private void addLeftPanel(JSplitPane splitPane){
 		
 		JPanel windowLeft = new JPanel();
 		GroupLayout windowLeftLayout = new GroupLayout(windowLeft);
@@ -116,23 +122,11 @@ public class MainWindow extends JFrame {
 				.addComponent(patientLabel)
 				.addComponent(strut)
 				.addComponent(patientDataPanel));
+		
 
-	
 		
-		
-		
-		
-		////////////
-		
-		JPanel windowRight = new JPanel();
-		
-		
-		JSplitPane splitPane = new JSplitPane();
-		contentPane.add(splitPane, BorderLayout.CENTER);
 		splitPane.setLeftComponent(windowLeft);
 		
-		
-	
 	}
 	
 	private void refreshPatientLabel(){
@@ -229,6 +223,12 @@ public class MainWindow extends JFrame {
 						
 						ArrayList<String> constructorInput = null;
 						constructorInput = NewPatientWindow.showInputdialog();
+						
+						// if cancel or close chosen on new patient window:
+						if (constructorInput == null)
+							return; 
+						
+						//else:
 						BrainFreezeMain.patients.add(new Patient(
 								(constructorInput.toArray( new String[constructorInput.size()]))));
 						BrainFreezeMain.currentPatientIndex = BrainFreezeMain.patients.size()-1;
@@ -254,7 +254,11 @@ public class MainWindow extends JFrame {
 					
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						// LOAD crap
+						JFileChooser fileOpener = new JFileChooser();
+		                int whatDo = fileOpener.showOpenDialog(toolBar); // did the user choose to load anything?
+		                if (whatDo == JFileChooser.APPROVE_OPTION){
+		                	File patientFile = fileOpener.getSelectedFile();
+		                }
 						
 					}
 				});

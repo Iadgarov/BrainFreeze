@@ -6,13 +6,14 @@ import java.util.ArrayList;
 
 import javax.swing.SwingUtilities;
 
+import mainWindow.MainWindow;
 import objects.Patient;
 
 public class BrainFreezeMain {
 
 	public static ArrayList<Patient> patients = new ArrayList<>();
 	public static int currentPatientIndex = 0;
-	public static final String[] RESULT_TYPES = {"graph A", "graph B", "crap", "shit"};
+
 
 	/**
 	 * Launch the application.

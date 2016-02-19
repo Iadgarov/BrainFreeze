@@ -1,5 +1,7 @@
 package objects;
 
+import java.util.ArrayList;
+
 public class Patient {
 	
 	// Patient attributes:
@@ -20,10 +22,13 @@ public class Patient {
 	public final static String ID_IDENTIFIER = "<ID>";
 	public final static String CONDITON_IDENTIFIER = "<condition>";
 	
+	//public final static String iDATA_IDENTIFIER = "<dataI>";
+	//public final static String lDATA_IDENTIFIER = "<datal>";
+	
 	private final static String NOT_KNOWN = "Unspecified";
 	
 	public Patient(String[] args){
-		
+				
 		for (String s:args){
 			
 			if (s.startsWith(FIRST_NAME_IDENTIFIER))
@@ -43,8 +48,11 @@ public class Patient {
 			
 			else if (s.startsWith(CONDITON_IDENTIFIER))
 				this.condition = s;
-				
+		
+			
 		}
+		
+		this.data = new Measurements();
 		
 		
 		
@@ -130,9 +138,9 @@ public class Patient {
 		return data;
 	}
 	
-	public void setData(Measurements data) {
-		this.data = data;
-		
+	public void setData(ArrayList<String> data) {
+		this.data.injectData(data);
+		return;
 		//either load data or take the test
 	}
 	

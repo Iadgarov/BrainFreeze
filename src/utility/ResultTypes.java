@@ -1,10 +1,18 @@
 package utility;
 
+/**
+ * Enum class
+ * Holds all result types and their names 
+ * @author David
+ *
+ */
 public enum ResultTypes {
 
 	ITD ("ITD Histogram"),
-	LTD ("LTD Histogram"),
-	TEST ("test");
+	LTD ("ILD Histogram"),
+	BOTH_HIST("Both Histograms"),
+	PARAM_DETAIL ("Lateralization Index (Advanced)"),
+	DIAGNOSIS ("Patient Diagnosis (Advanced)");
 	
 	private final String resultName;
 	

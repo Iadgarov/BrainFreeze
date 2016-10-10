@@ -38,6 +38,7 @@ import utility.UsefulMethods;
 public class BubbleChart extends ApplicationFrame{
 	
 	 static final Font F = new Font("Serif", Font.PLAIN, 20);
+	 static final Font f = new Font("Serif", Font.PLAIN, 15);
 
 	/**
 	 * 
@@ -87,16 +88,27 @@ public class BubbleChart extends ApplicationFrame{
        xyplot.setForegroundAlpha( 0.95F );  
        
        NumberAxis xa = new NumberAxis(xAxis);
-       xa.setLowerBound(-0.9);
-       xa.setUpperBound(0.9);;
-       xa.setTickUnit(new NumberTickUnit(0.2));
+       xa.setTickLabelFont(f);
        xa.setLabelFont(F);
+       
+       
+	   if (type == ITD){
+		   xa.setLowerBound(-0.9);
+	       xa.setUpperBound(0.9);;
+	       xa.setTickUnit(new NumberTickUnit(0.2));
+	   }
+	   else{
+		   xa.setLowerBound(-22);
+	       xa.setUpperBound(22);;
+	       xa.setTickUnit(new NumberTickUnit(5));
+	   }
        
        NumberAxis ya = new NumberAxis(yAxis);
        ya.setLowerBound(0.5);
        ya.setUpperBound(9);;
        ya.setTickUnit(new NumberTickUnit(1));
        ya.setLabelFont(F);
+       ya.setTickLabelFont(f);
        
        xyplot.setDomainAxis(ya);
        xyplot.setRangeAxis(xa);
@@ -116,7 +128,8 @@ public class BubbleChart extends ApplicationFrame{
    {
       DefaultXYZDataset defaultxyzdataset = new DefaultXYZDataset(); 
                      
-      double x[ ] = { -0.8, -0.6, -0.4, -0.2, 0, 0.2, 0.4, 0.6, 0.8 };                 
+      double x_ITD[ ] = { -0.8, -0.6, -0.4, -0.2, 0, 0.2, 0.4, 0.6, 0.8 };        
+      double x_ILD[ ] = { -20, -15, -10, -5, 0, 5, 10, 15, 20 }; 
         
       int _temp[][] = (type == ITD) ? 
     		  BrainFreezeMain.patients.get(BrainFreezeMain.currentPatientIndex).getData().getITD_Results() :
@@ -144,7 +157,10 @@ public class BubbleChart extends ApplicationFrame{
       
      
      for (int i = 0; i < 9; i++){
-    	 defaultxyzdataset.addSeries( "Pos " + Integer.toString(i) , new double[][] {positions[i], x, bins[i]});
+    	 if (type == ITD)
+    		 defaultxyzdataset.addSeries( "Pos " + Integer.toString(i) , new double[][] {positions[i], x_ITD, bins[i]});
+    	 else
+    		 defaultxyzdataset.addSeries( "Pos " + Integer.toString(i) , new double[][] {positions[i], x_ILD, bins[i]});
      }
    
      

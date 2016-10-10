@@ -15,7 +15,7 @@ import buttons.SettingsButton;
 
 /**
  * The top toolbar
- * @author David
+ * @author David Iadgarov
  *
  */
 public class TopToolBar {

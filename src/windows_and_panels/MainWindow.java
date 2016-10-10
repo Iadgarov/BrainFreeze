@@ -18,7 +18,7 @@ import javax.swing.JSplitPane;
 
 /**
  * The main program window, contains tool bar and below it two section, left and right as a splitpane 
- * @author David
+ * @author David Iadgarov
  *
  */
 public class MainWindow extends JFrame {

@@ -13,6 +13,11 @@ import objects.Patient;
 import utility.Settings;
 import windows_and_panels.MainWindow;
 
+/**
+ * 
+ * @author David Iadgarov
+ *
+ */
 public class BrainFreezeMain {
 
 	public static ArrayList<Patient> patients = new ArrayList<>();

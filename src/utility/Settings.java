@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  */
 public class Settings {
 	
-	public final static String version = "v0.9.1 [beta]";
+	public final static String version = "v0.9.3 [beta]";
 
 	public final static int ITD = 0;
 	public final static int ILD = 1;

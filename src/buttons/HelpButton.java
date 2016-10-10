@@ -17,7 +17,7 @@ import windows_and_panels.HelpPanel;
 
 /**
  * Button for the top tool bar, opens up simple pop-up window (non exclusive) to show opening text 
- * @author David
+ * @author David Iadgarov
  *
  */
 public class HelpButton extends JButton {
